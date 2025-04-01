@@ -3,8 +3,25 @@
 # Configuration - modify these variables to change port filters
 # Default filters for USB ports
 PORT_PATTERNS=("tty.usbmodem" "tty.usbserial")
-# You can add or remove patterns as needed, examples:
 # PORT_PATTERNS=("tty.usbmodem" "tty.usbserial" "tty.wchusbserial" "tty.SLAB_USBtoUART")
+
+# Default baud rate if not specified by flag
+DEFAULT_BAUD_RATE="115200"
+baud_rate_arg=""
+
+# Parse command-line arguments
+for arg in "$@"; do
+  case $arg in
+    --baudrate=*)
+      baud_rate_arg="${arg#*=}"
+      shift # Remove --baudrate= from processing
+      ;;
+    *)
+      # Unknown option
+      ;;
+  esac
+done
+
 
 # Check if gum is installed
 if ! command -v gum &> /dev/null; then
