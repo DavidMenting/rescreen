@@ -12,6 +12,10 @@ USB serial ports tend to disappear and reappear when you're working with attache
 2. Allow execution `chmod +x rescreen.sh`
 3. Run `./rescreen.sh`
 
+   Optional flags:
+4. * --baudrate=115200: Specify a baudrate. rescreen will not ask for a baudrate when a port is selected
+   * `--auto-connect`: Automatically connect to the first selected port with the default baud rate within 1 second. Without this flag, you will be prompted to select a port each time.
+
 # Requirements
 
 screen is shipped with every Mac and Linux machine
